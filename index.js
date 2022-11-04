@@ -1,5 +1,12 @@
 let playerPoints = 0;
 let computerPoints = 0;
+let playerPointsEl = document.getElementById('human');
+let computerPointsEl = document.getElementById('computer');
+
+let resultLogEl = document.getElementById('result-log');
+let humanChoice = document.getElementById('human-choice');
+let computerChoice = document.getElementById('computer-choice');
+
 
 // Takes the current string(this) and capitalizes the first letter by adding '.capitalizeFirstLetter' to the string. e.g. computerSelection.capitalizeFirstLetter()
 String.prototype.capitalizeFirstLetter = function () {
@@ -16,19 +23,21 @@ function getComputerChoice() {
 
 //player choice
 const playerChoice = document.querySelectorAll('button');
+
 playerChoice.forEach((selection) => {
     selection.addEventListener('click', e => {
         playerSelection = e.target.id;
-        console.log(playerSelection);
         computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection))
+        playRound(playerSelection, computerSelection);
+        humanChoice.textContent = 'Player selection: ' + playerSelection.capitalizeFirstLetter();
+        computerChoice.textContent = 'Computer selection: ' + computerSelection.capitalizeFirstLetter();
     });
 });
 
 //
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return ('It\'s a tie!');
+        return resultLogEl.textContent = 'It\'s a tie!';
     } else if ( 
         (playerSelection === 'rock' && computerSelection === 'paper') 
         || 
@@ -37,54 +46,26 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'scissors' && computerSelection === 'rock') 
         ) {
         computerPoints++;
-        return (`You Lose! ${computerSelection.capitalizeFirstLetter()} beats ${playerSelection.capitalizeFirstLetter()}`);
+        computerPointsEl.textContent = 'Computer: ' + computerPoints;
+        return resultLogEl.textContent = `You Lose! ${computerSelection.capitalizeFirstLetter()} beats ${playerSelection.capitalizeFirstLetter()}`
     } else {
         playerPoints++;
-        return (`You Win! ${playerSelection.capitalizeFirstLetter()} beats ${computerSelection.capitalizeFirstLetter()}`);
+        playerPointsEl.textContent = 'Human: ' + playerPoints;
+        return resultLogEl.textContent = `You Win! ${playerSelection.capitalizeFirstLetter()} beats ${computerSelection.capitalizeFirstLetter()}`;
     }
 }
 
+//
+function getWinner () {
+    if (computerPoints === 5) {
+        console.log('Computer Wins!');
+    } else if (playerPoints === 5) {
+        console.log('Player Wins!');
+    }
+}
 
-//Gets player choice and loops until correct input is received
-// function checkPlayerChoice() {
-//     let answer = false;
-//     while (answer == false) {
-//         const playerChoice = prompt('Rock, Paper, or Scissors?');
-//         if (playerChoice == null) {
-//             continue;
-//         }
-//         const playerChoiceInLower = playerChoice.toLowerCase();
-//         if (choice.includes(playerChoiceInLower)) {
-//             answer = true;
-//             return playerChoiceInLower;
-//         }
-//     }
-// }
+console.log(computerPoints);
+console.log(playerPoints);
 
-//game() plays 5 rounds and announces the winner or looser at the end
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         playerSelection = checkPlayerChoice();
-//         console.log('Player selection: ' + playerSelection.capitalizeFirstLetter());
 
-//         computerSelection = getComputerChoice();
-//         console.log('Computer selection: ' + computerSelection.capitalizeFirstLetter());
-        
-//         console.log(playRound(playerSelection, computerSelection));
-
-//         console.log('Player points: ' + playerPoints);
-//         console.log('Computer points: ' + computerPoints);
-
-//         console.log('');
-//     }
-    
-//     if (playerPoints > computerPoints) {
-//         return ('~YOU WON!~');
-//     } else if (computerPoints > playerPoints) {
-//         return ('~COMPUTER WON!~');
-//     } else {
-//         return ('~IT\'S A TIE!~');
-//     }
-// }
-
-// console.log(game());
+console.log(getWinner());

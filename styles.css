@@ -13,6 +13,7 @@ body {
 
 h1 {
     text-align: center;
+    font-size: 50px;
 }
 
 .container {
@@ -20,4 +21,24 @@ h1 {
     justify-content: space-evenly;
     width: 50%;
     margin: auto;
+    border: 2px solid sandybrown;
+}
+
+.results-container {
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 75%;
+    border: 2px solid salmon;
+    align-items: center;
+    
+}
+
+.results {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: auto;
+    border: 2px solid red;
 }

@@ -35,6 +35,7 @@ humanChoice.forEach((selection) => {
 //plays a round
 function playRound(humanSelection, computerSelection) {
     if (humanSelection === computerSelection) {
+        resultLogEl.style.color = 'yellow';
         resultLogEl.textContent = 'It\'s a tie!';
     } else if ( 
         (humanSelection === 'Rock' && computerSelection === 'Paper') 
@@ -45,10 +46,12 @@ function playRound(humanSelection, computerSelection) {
         ) {
         computerPoints++;
         computerPointsEl.textContent = 'Computer: ' + computerPoints;
+        resultLogEl.style.color = 'red';
         resultLogEl.textContent = `You Lose! ${computerSelection} beats ${humanSelection}`;
     } else {
         humanPoints++;
         humanPointsEl.textContent = 'Human: ' + humanPoints;
+        resultLogEl.style.color = 'green';
         resultLogEl.textContent = `You Win! ${humanSelection} beats ${computerSelection}`;
     }
     return getWinner();

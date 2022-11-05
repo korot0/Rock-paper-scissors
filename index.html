@@ -11,9 +11,15 @@
 <body>
 <h1>Rock, Paper, Scissors?</h1>
     <div class="container">
-        <button class="button" id="Rock">ROCK</button>
-        <button class="button" id="Paper">PAPER</button>
-        <button class="button" id="Scissors">SCISSORS</button>
+        <button class="button">
+            <img id="Rock" class="sign" src="./img/rock.png" alt="">
+        </button>
+        <button class="button">
+            <img  id="Paper" class="sign"src="./img/paper.png" alt="">
+        </button>
+        <button class="button">
+            <img id="Scissors" class="sign"src="./img/scissors.png" alt="">
+        </button>
     </div>
     <div class="results-container">
         <div class="results">
@@ -27,6 +33,7 @@
             <div id="result-log"></div>
             <div id="winner"></div>
         </div>
+        <button id="newGameBtn" onclick="window.location.reload();">NEW GAME</button>
     </div>
 </body>
 </html>

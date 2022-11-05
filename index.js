@@ -1,71 +1,76 @@
-let playerPoints = 0;
+let humanPoints = 0;
 let computerPoints = 0;
-let playerPointsEl = document.getElementById('human');
-let computerPointsEl = document.getElementById('computer');
+const humanPointsEl = document.getElementById('human');
+const computerPointsEl = document.getElementById('computer');
 
-let resultLogEl = document.getElementById('result-log');
-let humanChoice = document.getElementById('human-choice');
-let computerChoice = document.getElementById('computer-choice');
+const humanChoiceEl = document.getElementById('human-choice');
+const computerChoiceEl = document.getElementById('computer-choice');
+const resultLogEl = document.getElementById('result-log');
 
-
-// Takes the current string(this) and capitalizes the first letter by adding '.capitalizeFirstLetter' to the string. e.g. computerSelection.capitalizeFirstLetter()
-String.prototype.capitalizeFirstLetter = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
+const winnerEL = document.getElementById('winner');
 
 //getComputerChoice() returns a random value from the choice array and stores the selection in computerSelection
-const choice = ['rock', 'paper', 'scissors'];
+const choice = ['Rock', 'Paper', 'Scissors'];
 
 function getComputerChoice() {
     const computer = Math.floor(Math.random() * choice.length);
     return choice[computer];
 }
 
-//player choice
-const playerChoice = document.querySelectorAll('button');
+//Get human choice
+const humanChoice = document.querySelectorAll('.button');
 
-playerChoice.forEach((selection) => {
+humanChoice.forEach((selection) => {
     selection.addEventListener('click', e => {
-        playerSelection = e.target.id;
+        humanSelection = e.target.id;
         computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        humanChoice.textContent = 'Player selection: ' + playerSelection.capitalizeFirstLetter();
-        computerChoice.textContent = 'Computer selection: ' + computerSelection.capitalizeFirstLetter();
+        playRound(humanSelection, computerSelection);
+        humanChoiceEl.textContent = 'You chose: ' + humanSelection;
+        computerChoiceEl.textContent = 'Computer chose: ' + computerSelection;
     });
 });
 
-//
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
+//plays a round
+function playRound(humanSelection, computerSelection) {
+    if (humanSelection === computerSelection) {
         return resultLogEl.textContent = 'It\'s a tie!';
     } else if ( 
-        (playerSelection === 'rock' && computerSelection === 'paper') 
+        (humanSelection === 'Rock' && computerSelection === 'Paper') 
         || 
-        (playerSelection === 'paper' && computerSelection === 'scissors') 
+        (humanSelection === 'Paper' && computerSelection === 'Scissors') 
         || 
-        (playerSelection === 'scissors' && computerSelection === 'rock') 
+        (humanSelection === 'Scissors' && computerSelection === 'Rock') 
         ) {
         computerPoints++;
         computerPointsEl.textContent = 'Computer: ' + computerPoints;
-        return resultLogEl.textContent = `You Lose! ${computerSelection.capitalizeFirstLetter()} beats ${playerSelection.capitalizeFirstLetter()}`
+        resultLogEl.textContent = `You Lose! ${computerSelection} beats ${humanSelection}`;
     } else {
-        playerPoints++;
-        playerPointsEl.textContent = 'Human: ' + playerPoints;
-        return resultLogEl.textContent = `You Win! ${playerSelection.capitalizeFirstLetter()} beats ${computerSelection.capitalizeFirstLetter()}`;
+        humanPoints++;
+        humanPointsEl.textContent = 'Human: ' + humanPoints;
+        resultLogEl.textContent = `You Win! ${humanSelection} beats ${computerSelection}`;
     }
+    return getWinner();
 }
 
 //
 function getWinner () {
     if (computerPoints === 5) {
-        console.log('Computer Wins!');
-    } else if (playerPoints === 5) {
-        console.log('Player Wins!');
+        winnerEL.textContent = 'COMPUTER WINS!';
+        return stopGame();
+    } else if (humanPoints === 5) {
+        winnerEL.textContent = 'HUMAN WINS!';
+        return stopGame();
     }
 }
 
-console.log(computerPoints);
-console.log(playerPoints);
+//Disable buttons and removes log
+function stopGame() {
+    resultLogEl.remove();
+    humanChoice.forEach(button => {
+        button.disabled = true;
+    });
+}
 
+function newGame() {
 
-console.log(getWinner());
+}

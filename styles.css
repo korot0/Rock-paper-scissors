@@ -3,59 +3,69 @@
 * {
     box-sizing: border-box;
     font-family: 'Poor Story', sans-serif;
+    text-align: center;
 }
 
 body {
     margin: 0;
-    background-color: #222222;
-    color: #EBEBEB;
+    background-color: #DB995A;
 }
 
+/* header */
 h1 {
-    text-align: center;
-    font-size: 50px;
-    color: teal;
+    font-size: 70px;
+    margin: 0;
 }
 
-.container {
+#header {
+    padding: 40px;
+    background-color: #654236;
+    color: #DAEFB3;  
+}
+
+/* signs */
+#signs-container {
     display: flex;
-    justify-content: space-evenly;
-    width: 50%;
+    justify-content: space-between;
+    padding: 40px 0;
+    width: 700px;
     margin: auto;
-    /* border: 2px solid sandybrown; */
 }
 
-.results-container {
+.sign {
+    width: 180px;
+}
+
+/* results */
+#results-container {
     font-size: 40px;
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 75%;
-    /* border: 2px solid salmon; */
     align-items: center;
-    
+    background-color: #DA7635;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 600px;
+    padding: 20px;
 }
 
-.results {
+#results {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     margin: auto;
     /* border: 2px solid red; */
-    text-align: center;
 }
 
-.log {
-    text-align: center;
-}
-
+/* butons */
 button:hover {
     transform: scale(1.1);
 }
 
 .button, 
 #newGameBtn {
-    background-color: darkgrey;
+    background-color: #DAEFB3;
     border: none;
     border-radius: 5px;
     margin: 0 5px;
@@ -69,10 +79,12 @@ button:hover {
     font-size: 25px;
 }
 
-#div {
-    color: teal;
-}
-
-.sign {
-    width: 100px;
+/* footer */
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 30px;
+    background-color: #654236;
+    color: #DAEFB3;
 }

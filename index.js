@@ -5,12 +5,12 @@ const computerPointsEl = document.getElementById('computer');
 
 const humanChoiceEl = document.getElementById('human-choice');
 const computerChoiceEl = document.getElementById('computer-choice');
-const resultLogEl = document.getElementById('result-log');
 
+const resultLogEl = document.getElementById('result-log');
 const winnerEL = document.getElementById('winner');
 
-const newGameBtn = document.getElementById('newGameBtn');
-newGameBtn.style.visibility = 'hidden';
+const newGameBtnEl = document.getElementById('newGameBtn');
+newGameBtnEl.style.visibility = 'hidden';
 
 //getComputerChoice() returns a random value from the choice array and stores the selection in computerSelection
 const choice = ['Rock', 'Paper', 'Scissors'];
@@ -20,7 +20,7 @@ function getComputerChoice() {
     return choice[computer];
 }
 
-//Get human choice
+//
 const humanChoice = document.querySelectorAll('.button');
 humanChoice.forEach((selection) => {
     selection.addEventListener('click', e => {
@@ -32,7 +32,7 @@ humanChoice.forEach((selection) => {
     });
 });
 
-//plays a round
+//
 function playRound(humanSelection, computerSelection) {
     if (humanSelection === computerSelection) {
         resultLogEl.style.color = 'yellow';
@@ -70,11 +70,11 @@ function getWinner () {
     }
 }
 
-//Disable buttons and removes log
+//
 function stopGame() {
     resultLogEl.remove();
     humanChoice.forEach(button => {
         button.disabled = true;
     });
-    newGameBtn.style.visibility = 'visible';
+    newGameBtnEl.style.visibility = 'visible';
 }

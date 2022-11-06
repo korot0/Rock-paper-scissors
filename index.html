@@ -6,34 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js" defer></script>
 </head>
 <body>
-<h1>Rock, Paper, Scissors?</h1>
-    <div class="container">
-        <button class="button">
-            <img id="Rock" class="sign" src="./img/rock.png" alt="">
-        </button>
-        <button class="button">
-            <img  id="Paper" class="sign"src="./img/paper.png" alt="">
-        </button>
-        <button class="button">
-            <img id="Scissors" class="sign"src="./img/scissors.png" alt="">
-        </button>
+    <div id="header">
+        <h1>Rock, Paper, Scissors?</h1>
     </div>
-    <div class="results-container">
-        <div class="results">
-            <div id="human">Human: 0</div>
-            <div id="computer">Computer: 0</div>
+        <div id="signs-container">
+            <button class="button">
+                <img id="Rock" class="sign" src="./img/rock.png" alt="">
+            </button>
+            <button class="button">
+                <img  id="Paper" class="sign"src="./img/paper.png" alt="">
+            </button>
+            <button class="button">
+                <img id="Scissors" class="sign"src="./img/scissors.png" alt="">
+            </button>
         </div>
-        <div class="log">
-            <div id="div">~ Log ~</div>
-            <div id="human-choice"></div>
-            <div id="computer-choice"></div>
-            <div id="result-log"></div>
-            <div id="winner"></div>
+        <div id="results-container">
+            <div id="results">
+                <div id="human">Human: 0</div>
+                <div id="computer">Computer: 0</div>
+            </div>
+                <div id="human-choice"></div>
+                <div id="computer-choice"></div>
+                <div id="result-log"></div>
+                <div id="winner"></div>
+            <button id="newGameBtn" onclick="window.location.reload();">NEW GAME</button>
         </div>
-        <button id="newGameBtn" onclick="window.location.reload();">NEW GAME</button>
-    </div>
+    <footer>
+        <i style="font-size:24px" class="fa">&#xf09b;</i><a href="https://github.com/korot0" target="_blank"> By korot0</a>
+    </footer>
 </body>
 </html>
